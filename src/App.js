@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+import ListOfTracks from "./InitialTracks";
+import GenreNavigation from "./GenreNavigation";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <GenreNavigation />
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/jazz" />
+          </Route>
+          <Route exact path="/jazz">
+            <ListOfTracks genre="jazz" />
+          </Route>
+          <Route exact path="/rock">
+            <ListOfTracks genre="rock" />
+          </Route>
+          <Route exact path="/house">
+            <ListOfTracks genre="house" />
+          </Route>
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 
