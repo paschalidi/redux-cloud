@@ -31,9 +31,8 @@ const InitialTracks = ({ dispatch, genre, reducerData }) => {
           case READY:
             return reducerData[genre].map(
               ({ trackImageUrl, title, userAvatarUrl, username, id }) => (
-                <Col lg={3}>
+                <Col lg={3} key={id}>
                   <TrackBox
-                    key={id}
                     trackImageUrl={trackImageUrl}
                     title={title}
                     userAvatarUrl={userAvatarUrl}
